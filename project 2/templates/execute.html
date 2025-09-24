@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Execute Commands (Dangerous){% endblock %}
+{% block content %}
+<div class="grid-2">
+  <form method="post" class="card">
+    <h3>Run a Server Command</h3>
+    <input name="cmd" placeholder="e.g., ls -la / or cat /etc/passwd" />
+    <button class="primary" type="submit">Execute</button>
+  </form>
+  <div class="card">
+    <h3>Output</h3>
+    <pre style="white-space:pre-wrap">{{ output }}</pre>
+  </div>
+</div>
+{% endblock %}
+
+

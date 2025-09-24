@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Admin • Users{% endblock %}
+{% block content %}
+<h2>Manage Users</h2>
+<div class="grid-2">
+  <form method="post" class="card">
+    <h3>Create User</h3>
+    <label>Username</label>
+    <input name="username" />
+    <label>Password</label>
+    <input name="password" />
+    <label>Role</label>
+    <select name="role">
+      <option value="student">student</option>
+      <option value="teacher">teacher</option>
+      <option value="admin">admin</option>
+    </select>
+    <button class="primary" type="submit">Create</button>
+  </form>
+
+  <div class="card">
+    <h3>All Users</h3>
+    <table class="table">
+      <thead><tr><th>ID</th><th>Username</th><th>Role</th></tr></thead>
+      <tbody>
+        {% for u in users %}
+        <tr><td>{{ u.id }}</td><td>{{ u.username }}</td><td>{{ u.role }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+

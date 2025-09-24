@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Upload Assignment{% endblock %}
+{% block content %}
+<div class="card">
+  <h3>Upload for: {{ assignment.title }}</h3>
+  <form method="post" enctype="multipart/form-data">
+    <input type="file" name="file" />
+    <button class="primary" type="submit">Upload</button>
+  </form>
+</div>
+{% endblock %}
+
+

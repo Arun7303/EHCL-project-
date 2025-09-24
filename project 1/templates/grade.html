@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Grade Submission{% endblock %}
+{% block content %}
+<div class="card">
+  <h3>Grade: {{ sub.assignment_title }} by {{ sub.student }}</h3>
+  <p>File: <a href="{{ url_for('download') }}?path={{ sub.filename }}">{{ sub.filename }}</a></p>
+  <form method="post">
+    <label>Grade</label>
+    <input name="grade" value="{{ sub.grade or '' }}" />
+    <label>Feedback</label>
+    <textarea name="feedback" rows="4">{{ sub.feedback or '' }}</textarea>
+    <button class="primary" type="submit">Save</button>
+  </form>
+</div>
+{% endblock %}
+
+

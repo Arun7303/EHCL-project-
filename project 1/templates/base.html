@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Student Portal{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="/static/logo.png" alt="Logo" height="20" width="20"/>
+      <div>
+        <div class="brand-title">Vishwakarma University</div>
+        <div class="brand-sub">Student Portal</div>
+      </div>
+    </div>
+    <nav>
+      {% if session.get('user_id') %}
+      <span class="user">{{ session.get('username') }} ({{ session.get('role') }})</span>
+      <a class="btn" href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a class="btn" href="{{ url_for('logout') }}">Logout</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <main class="container">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">
+          {% for m in messages %}<div class="flash-item">{{ m }}</div>{% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">Powered by eduplus • For educational use only</footer>
+</body>
+</html>
+
+

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<div class="card" style="max-width:520px;margin:0 auto;">
+  <h3>Create Account</h3>
+  <form method="post">
+    <label>Username</label>
+    <input name="username" />
+    <label>Password (min 3 chars allowed)</label>
+    <input name="password" />
+    <label>Role</label>
+    <select name="role">
+      <option value="student">student</option>
+      <option value="teacher">teacher</option>
+    </select>
+    <button class="primary" type="submit">Register</button>
+  </form>
+</div>
+{% endblock %}
+
+

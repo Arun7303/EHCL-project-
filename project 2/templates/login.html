@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Student Sign-In{% endblock %}
+{% block content %}
+<div class="login-grid">
+  <div class="login-left">
+    <div class="hero-card">
+      <img src="{{ url_for('static', filename='eduplus.jpg') }}" alt="Promo" style="width:100%;height:auto;border-radius:14px;display:block;"/>
+    </div>
+  </div>
+  <div class="login-right">
+    <div class="auth-logo"><img src="{{ url_for('static', filename='logo1.png') }}" alt="Logo"></div>
+    <div class="logo-title">Student Sign-In</div>
+    <form method="post" class="card">
+      <label>Username</label>
+      <input type="text" name="username" placeholder="Username" />
+      <label>Password</label>
+      <input type="password" name="password" placeholder="Password" />
+      <button class="primary" type="submit">Sign In</button>
+    </form>
+    <div class="help-row">
+      <a href="#">Help</a>
+      <a href="#">Forgot Password?</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+

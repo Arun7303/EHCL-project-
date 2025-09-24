@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Teacher • Submissions{% endblock %}
+{% block content %}
+<div class="card">
+  <h3>Submissions for My Assignments</h3>
+  <table class="table">
+    <thead><tr><th>ID</th><th>Assignment</th><th>Student</th><th>Grade</th><th>File</th><th>Action</th></tr></thead>
+    <tbody>
+      {% for r in rows %}
+      <tr>
+        <td>{{ r.submission_id }}</td>
+        <td>{{ r.assignment_title }}</td>
+        <td>{{ r.student }}</td>
+        <td>{{ r.grade or '-' }}</td>
+        <td><a class="btn" href="{{ url_for('download') }}?path={{ r.filename }}">Download</a></td>
+        <td><a class="btn" href="{{ url_for('grade_submission', submission_id=r.submission_id) }}">Grade</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
+
+

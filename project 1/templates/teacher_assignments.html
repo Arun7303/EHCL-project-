@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Teacher • Assignments{% endblock %}
+{% block content %}
+<div class="grid-2">
+  <form method="post" class="card">
+    <h3>Create Assignment</h3>
+    <label>Title</label>
+    <input name="title" />
+    <label>Description (HTML allowed)</label>
+    <textarea name="description" rows="5"></textarea>
+    <label>Due Date</label>
+    <input type="date" name="due_date" />
+    <button class="primary" type="submit">Create</button>
+  </form>
+
+  <div class="card">
+    <h3>My Assignments</h3>
+    <p><a class="btn" href="{{ url_for('teacher_submissions') }}">View Submissions</a></p>
+    <table class="table">
+      <thead><tr><th>ID</th><th>Title</th><th>Due</th><th>Description</th></tr></thead>
+      <tbody>
+        {% for a in assignments %}
+        <tr>
+          <td>{{ a.id }}</td>
+          <td>{{ a.title }}</td>
+          <td>{{ a.due_date|datetime }}</td>
+          <td>{{ a.description | safe }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+

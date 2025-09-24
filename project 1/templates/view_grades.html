@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}View Grades (IDOR){% endblock %}
+{% block content %}
+<div class="card">
+  <h3>Grades for Student ID: {{ student_id }}</h3>
+  <table class="table">
+    <thead><tr><th>Submission</th><th>Assignment</th><th>Grade</th></tr></thead>
+    <tbody>
+      {% for r in rows %}
+      <tr>
+        <td>{{ r.id }}</td>
+        <td>{{ r.assignment_id }}</td>
+        <td>{{ r.grade or '-' }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h4>Grade Update</h4>
+  <form method="post" action="{{ url_for('update_grade') }}">
+    <label>Submission ID</label>
+    <input name="submission_id" />
+    <label>New Grade</label>
+    <input name="grade" />
+    <button class="primary" type="submit">Update</button>
+  </form>
+</div>
+{% endblock %}
+
+

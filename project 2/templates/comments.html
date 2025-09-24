@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Comments for {{ assignment.title }} (Stored XSS){% endblock %}
+{% block content %}
+<div class="grid-2">
+  <form method="post" class="card">
+    <h3>Leave a Comment — Assignment: {{ assignment.title }}</h3>
+    <textarea name="content" rows="4" placeholder="Write anything, HTML allowed..."></textarea>
+    <button class="primary" type="submit">Post</button>
+  </form>
+  <div class="card">
+    <h3>Recent Comments</h3>
+    <ul>
+      {% for i in items %}
+      <li>
+        <strong>{{ i.username }}</strong> — <span class="muted">{{ i.created_at }}</span><br/>
+        <div class="comment-body">{{ i.content }}</div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endblock %}
+
+
